@@ -292,6 +292,7 @@ var terragruntHelp = map[string]string{
 	CMD_RENDER_JSON:                renderJsonHelp,
 	CMD_AWS_PROVIDER_PATCH:         awsProviderPatchHelp,
 	CMD_TERRAGRUNT_VALIDATE_INPUTS: validateInputsHelp,
+	CMD_HCLFMT:                     hclFmtHelp,
 }
 
 // Create the Terragrunt CLI App

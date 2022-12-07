@@ -19,6 +19,16 @@ import (
 	"github.com/gruntwork-io/terragrunt/util"
 )
 
+const hclFmtHelp = `
+   Usage: terragrunt hclfmt [OPTIONS]
+
+   Description:
+   Recursively find hcl files and rewrite them into a canonical format.
+
+   Options:
+   --terragrunt-hclfmt-file		The path to a single hcl file that the hclfmt command should run on.
+`
+
 // runHCLFmt recursively looks for hcl files in the directory tree starting at workingDir, and formats them
 // based on the language style guides provided by Hashicorp. This is done using the official hcl2 library.
 func runHCLFmt(terragruntOptions *options.TerragruntOptions) error {
