@@ -27,13 +27,13 @@ func enableVirtualTerminalProcessing(options *options.TerragruntOptions, file *o
 	var mode uint32
 	handle := windows.Handle(file.Fd())
 	if err := windows.GetConsoleMode(handle, &mode); err != nil {
-		options.Logger.Errorf("failed to get console mode: %v\n", err)
+		// If we fail to get the console mode, this I/O handle is likely a pipe and we were called by another process
+		options.Logger.Debugf("failed to get console mode: %v\n", err)
 		return
 	}
 
 	if err := windows.SetConsoleMode(handle, mode|windows.ENABLE_VIRTUAL_TERMINAL_PROCESSING); err != nil {
 		options.Logger.Errorf("failed to set console mode: %v\n", err)
-		windows.SetConsoleMode(handle, mode)
 	}
 }
 
